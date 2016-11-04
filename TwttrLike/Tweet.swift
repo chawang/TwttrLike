@@ -9,6 +9,7 @@
 import UIKit
 
 class Tweet: NSObject {
+    
     var text: String?
     var timestamp: Date?
     var favorites: Int = 0

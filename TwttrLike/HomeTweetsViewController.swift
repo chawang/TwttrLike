@@ -25,13 +25,13 @@ class HomeTweetsViewController: UIViewController {
                 print(error.localizedDescription)
         })
         
-        client.accountInfo(success: { (user: User) in
-            print("name:\(user.name)")
-            print("screenname:\(user.screenname)")
-            print("profile url:\(user.profileURL)")
-        }, failure: { (error: Error) in
-                print(error.localizedDescription)
-        })
+//        client.accountInfo(success: { (user: User) in
+//            print("name:\(user.name)")
+//            print("screenname:\(user.screenname)")
+//            print("profile url:\(user.profileURL)")
+//        }, failure: { (error: Error) in
+//                print(error.localizedDescription)
+//        })
     }
 
     override func didReceiveMemoryWarning() {

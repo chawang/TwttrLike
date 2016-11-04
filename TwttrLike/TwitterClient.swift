@@ -10,6 +10,7 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
+    
     static let sharedInstance = TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: "swdYnak7zKYag0e3krReLSfeb", consumerSecret: "qCbNk1IRTsVfHVajZrAxuNO8IyeRQ03lRlb48geXPAMzveamut")!
     
     var loginSuccess: (() -> ())?
@@ -38,10 +39,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         fetchAccessToken(withPath: "/oauth/access_token", method: "POST", requestToken: requestToken, success: {(accessToken: BDBOAuth1Credential?) -> Void in
             print ("Got access token!")
             
-            self.loginSuccess?()
-        }, failure: {(error: Error?) -> Void in
-            print("\(error?.localizedDescription)")
-            self.loginFailure?(error!)
+            self.accountInfo(success: { (user: User) in
+                User.currentUser = user
+                self.loginSuccess?()
+                }, failure: { (error: Error) in
+                    self.loginFailure?(error)
+            })}, failure: {(error: Error?) -> Void in
+                print("\(error?.localizedDescription)")
+                self.loginFailure?(error!)
         })
     }
     
@@ -51,8 +56,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             let tweets = Tweet.tweetsFromArray(dictionaries: tweetDictionary)
             
             success(tweets)
-        }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
-            failure(response)
+            }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
+                failure(response)
         })
     }
     
@@ -62,8 +67,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             let user = User(dictionary: userDictionary)
             
             success(user)
-        }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
-            failure(response)
+            }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
+                failure(response)
         })
     }
 }
