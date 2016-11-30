@@ -55,6 +55,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             let tweetDictionary = response as! [NSDictionary]
             let tweets = Tweet.tweetsFromArray(dictionaries: tweetDictionary)
             
+            print(tweetDictionary)
+            
             success(tweets)
             }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
                 failure(response)
@@ -70,5 +72,13 @@ class TwitterClient: BDBOAuth1SessionManager {
             }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
                 failure(response)
         })
+    }
+    
+    
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
     }
 }

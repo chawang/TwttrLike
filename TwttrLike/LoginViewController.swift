@@ -11,10 +11,11 @@ import BDBOAuth1Manager
 import AFNetworking
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var loginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loginButton.layer.cornerRadius = 10
         // Do any additional setup after loading the view.
     }
 

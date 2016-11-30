@@ -8,22 +8,29 @@
 
 import UIKit
 
-class HomeTweetsViewController: UIViewController {
+class HomeTweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    var client: TwitterClient!
+    var homeTweets: [Tweet]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let client = TwitterClient.sharedInstance
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        client = TwitterClient.sharedInstance
         
         client.homeTimeline(success: { (tweets: [Tweet]) in
-            for tweet in tweets {
-                print("text:\(tweet.text)")
-                print("favs:\(tweet.favorites)")
-                print("retweets:\(tweet.retweets)")
-                print("timestamp:\(tweet.timestamp)")
-            }
+            self.homeTweets = tweets
+            self.tableView.reloadData()
         }, failure: { (error: Error) in
                 print(error.localizedDescription)
         })
+        
+        self.tableView.reloadData()
         
 //        client.accountInfo(success: { (user: User) in
 //            print("name:\(user.name)")
@@ -34,11 +41,26 @@ class HomeTweetsViewController: UIViewController {
 //        })
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return homeTweets?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        
+        cell.tweet = homeTweets[indexPath.row]
+        
+        return cell
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func OnLogout(_ sender: AnyObject) {
+        TwitterClient.sharedInstance.logout()
+    }
 
     /*
     // MARK: - Navigation

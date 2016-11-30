@@ -10,6 +10,8 @@ import UIKit
 
 class User: NSObject {
     
+    static let userDidLogoutNotification = "UserDidLogout"
+    
     var name: String?
     var screenname: String?
     var profileURL: URL?
@@ -43,7 +45,6 @@ class User: NSObject {
         }
         set(user){
             _currentUser = user
-            
             let defaults = UserDefaults.standard
             
             if let user = user {
