@@ -88,8 +88,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48y-0U-jI4">
-                                                    <rect key="frame" x="139" y="8" width="68" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="screenname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48y-0U-jI4">
+                                                    <rect key="frame" x="139" y="8" width="84" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -177,10 +177,10 @@
                                             <outlet property="nameLabel" destination="iQJ-ce-L54" id="Mmn-u8-B2d"/>
                                             <outlet property="retweetButton" destination="SIY-Sl-99T" id="msX-OU-5qM"/>
                                             <outlet property="retweetLabel" destination="0OO-Gq-Zi7" id="NXC-ZK-1Wj"/>
-                                            <outlet property="timeStampLabel" destination="kew-JL-3hI" id="FpF-ms-gYM"/>
+                                            <outlet property="screenNameLabel" destination="48y-0U-jI4" id="2cX-zS-ECs"/>
+                                            <outlet property="timeStampLabel" destination="kew-JL-3hI" id="odH-hE-jpW"/>
                                             <outlet property="tweetMessageLabel" destination="iSf-BB-xgg" id="eOB-iT-vZZ"/>
                                             <outlet property="userImageView" destination="7q0-zh-684" id="iam-gy-h63"/>
-                                            <outlet property="usernameLabel" destination="48y-0U-jI4" id="1lQ-eh-XRP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

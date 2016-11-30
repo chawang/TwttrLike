@@ -67,7 +67,9 @@ class TwitterClient: BDBOAuth1SessionManager {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: {(task: URLSessionDataTask, response: Any?) -> Void in
             let userDictionary = response as! NSDictionary
             let user = User(dictionary: userDictionary)
-            
+
+//            print(userDictionary)
+
             success(user)
             }, failure: {(task: URLSessionDataTask?, response: Error) -> Void in
                 failure(response)
