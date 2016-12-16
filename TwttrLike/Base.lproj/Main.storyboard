@@ -23,10 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1p0-ot-6zL">
-                                <rect key="frame" x="94" y="472" width="186" height="80"/>
+                                <rect key="frame" x="97.5" y="443.5" width="180" height="80"/>
                                 <color key="backgroundColor" red="0.38935004340277779" green="0.72745768229166663" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Vc9-Pw-qwZ"/>
+                                    <constraint firstAttribute="width" constant="180" id="jh8-gl-MeU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Login with Twitter">
@@ -36,12 +37,21 @@
                                     <action selector="onLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M1j-iY-Bd0"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_Logo_Blue" translatesAutoresizingMaskIntoConstraints="NO" id="w00-qL-k2D">
+                                <rect key="frame" x="112.5" y="158.5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="HOe-q7-bXi"/>
+                                    <constraint firstAttribute="width" constant="150" id="x3r-Vb-1o2"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1p0-ot-6zL" secondAttribute="bottom" constant="115" id="bFa-G6-Bqk"/>
-                            <constraint firstItem="1p0-ot-6zL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="94" id="hBr-us-KOE"/>
-                            <constraint firstAttribute="trailing" secondItem="1p0-ot-6zL" secondAttribute="trailing" constant="95" id="x0d-4s-4oq"/>
+                            <constraint firstItem="w00-qL-k2D" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y8T-b8-HM5"/>
+                            <constraint firstItem="1p0-ot-6zL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="150" id="c2f-fc-uem"/>
+                            <constraint firstItem="1p0-ot-6zL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hII-Zm-j21"/>
+                            <constraint firstItem="w00-qL-k2D" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="pNF-te-c4s"/>
+                            <constraint firstItem="w00-qL-k2D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="q3I-FN-h6n"/>
                         </constraints>
                     </view>
                     <connections>
@@ -73,7 +83,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dyj-nf-N0H" id="nRz-0B-5D0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Stamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kew-JL-3hI">
@@ -227,26 +237,9 @@
             </objects>
             <point key="canvasLocation" x="932" y="-558"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="vsx-DP-x1c">
-            <objects>
-                <viewController id="ePa-Hr-uO5" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uhX-9B-A2g"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ekh-hi-d2C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="apt-VY-RUV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TyW-2d-teW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="931" y="599"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="Twitter_Logo_Blue" width="400" height="400"/>
         <image name="heart" width="96" height="96"/>
         <image name="retweet" width="50" height="50"/>
     </resources>
