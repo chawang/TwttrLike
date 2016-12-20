@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 class User: NSObject {
     
@@ -16,6 +17,7 @@ class User: NSObject {
     var name: String?
     var screenname: String?
     var profileURL: URL?
+    var accessToken: BDBOAuth1Credential?
     
     var dictionary: NSDictionary?
     
@@ -44,7 +46,6 @@ class User: NSObject {
                     _currentUser = User(dictionary: dictionary)
                 }
             }
-            
             return _currentUser
         }
         set(user){

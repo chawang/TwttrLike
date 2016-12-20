@@ -13,7 +13,7 @@ import BDBOAuth1Manager
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let defaults = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if User.currentUser != nil {
             print("Current user saved: true")
+//            TwitterClient.sharedInstance.loginGetAccessToken(requestToken: <#T##BDBOAuth1Credential#>)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "TweetNavigationController")
             window?.rootViewController = vc
