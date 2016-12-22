@@ -30,8 +30,6 @@ class HomeTweetsViewController: UIViewController, UITableViewDelegate, UITableVi
                 print(error.localizedDescription)
         })
         
-        self.tableView.reloadData()
-        
 //        client.accountInfo(success: { (user: User) in
 //            print("name:\(user.name)")
 //            print("screenname:\(user.screenname)")
