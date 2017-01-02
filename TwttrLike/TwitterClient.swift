@@ -28,7 +28,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         TwitterClient.sharedInstance.deauthorize()
         TwitterClient.sharedInstance.requestSerializer.removeAccessToken()
         
-        TwitterClient.sharedInstance.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twttrLike://oauth"), scope: nil, success: {(requestToken: BDBOAuth1Credential?) -> Void in
+        fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twttrLike://oauth"), scope: nil, success: {(requestToken: BDBOAuth1Credential?) -> Void in
             print("Request token received")
             let authorizeurl = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")!
             UIApplication.shared.open(authorizeurl, options: [:], completionHandler: {(success: Bool) -> Void in
@@ -39,7 +39,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
 
     func loginWithAccessToken(requestToken: BDBOAuth1Credential) {
-        TwitterClient.sharedInstance.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: {
+        fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: {
             (accessToken: BDBOAuth1Credential?) -> () in
             self.currentAccount(success: {
                 (user: User) -> () in

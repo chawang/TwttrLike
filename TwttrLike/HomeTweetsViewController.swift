@@ -11,7 +11,7 @@ import UIKit
 class HomeTweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var client: TwitterClient!
+    var client = TwitterClient.sharedInstance
     var homeTweets: [Tweet]!
     
     override func viewDidLoad() {
@@ -21,7 +21,9 @@ class HomeTweetsViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        client = TwitterClient.sharedInstance
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         
         client.homeTimeline(success: { (tweets: [Tweet]) in
             self.homeTweets = tweets
@@ -60,6 +62,15 @@ class HomeTweetsViewController: UIViewController, UITableViewDelegate, UITableVi
         TwitterClient.sharedInstance.logout()
     }
 
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        client.homeTimeline(success: { (tweets: [Tweet]) in
+            self.homeTweets = tweets
+            self.tableView.reloadData()
+        }, failure: { (error: Error) in
+            print(error.localizedDescription)
+        })
+        refreshControl.endRefreshing()
+    }
     /*
     // MARK: - Navigation
 
